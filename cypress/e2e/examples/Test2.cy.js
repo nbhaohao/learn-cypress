@@ -1,11 +1,9 @@
-describe("My First Test Suite", () => {
-  it("My FirstTest case", () => {
+describe("My Second Test Suite", () => {
+  it("My Second case", () => {
     cy.visit("https://rahulshettyacademy.com/seleniumPractise/#/");
     cy.get(".search-keyword").type("ca");
     cy.wait(1000);
     cy.get(".products").as("productLocator");
-    cy.get(".product:visible").should("have.length", 4);
-    cy.get("@productLocator").find(".product").should("have.length", 4);
 
     cy.get("@productLocator")
       .find(".product")
@@ -15,8 +13,8 @@ describe("My First Test Suite", () => {
           cy.wrap(element).find("button").click();
         }
       });
-    cy.get(".brand").then((element) => {
-      cy.log(element.text());
-    });
+    cy.get(".cart-icon > img").click();
+    cy.contains("PROCEED TO CHECKOUT").click();
+    cy.contains("Place Order").click();
   });
 });

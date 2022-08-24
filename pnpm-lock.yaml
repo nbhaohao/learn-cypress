@@ -2,12 +2,14 @@ lockfileVersion: 5.4
 
 specifiers:
   cypress: ^10.4.0
+  cypress-iframe: ^1.0.1
   prettier: ^2.7.1
 
 dependencies:
   cypress: registry.npmjs.org/cypress/10.4.0
 
 devDependencies:
+  cypress-iframe: registry.npmjs.org/cypress-iframe/1.0.1
   prettier: registry.npmjs.org/prettier/2.7.1
 
 packages:
@@ -383,6 +385,14 @@ packages:
       shebang-command: registry.npmjs.org/shebang-command/2.0.0
       which: registry.npmjs.org/which/2.0.2
     dev: false
+
+  registry.npmjs.org/cypress-iframe/1.0.1:
+    resolution: {integrity: sha512-Ne+xkZmWMhfq3x6wbfzK/SzsVTCrJru3R3cLXsoSAZyfUtJDamXyaIieHXeea3pQDXF4wE2w4iUuvCYHhoD31g==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/cypress-iframe/-/cypress-iframe-1.0.1.tgz}
+    name: cypress-iframe
+    version: 1.0.1
+    peerDependencies:
+      '@types/cypress': ^1.1.0
+    dev: true
 
   registry.npmjs.org/cypress/10.4.0:
     resolution: {integrity: sha512-OM7F8MRE01SHQRVVzunid1ZK1m90XTxYnl+7uZfIrB4CYqUDCrZEeSyCXzIbsS6qcaijVCAhqDL60SxG8N6hew==, registry: https://registry.yarnpkg.com/, tarball: https://registry.npmjs.org/cypress/-/cypress-10.4.0.tgz}

@@ -8,5 +8,7 @@ describe("My Third Test Suite", () => {
         "Hello , share this practice page and share your knowledge"
       );
     });
+    cy.get("#opentab").invoke("removeAttr", "target").click();
+    cy.go("back");
   });
 });

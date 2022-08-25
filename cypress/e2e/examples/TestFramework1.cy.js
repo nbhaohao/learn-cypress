@@ -16,5 +16,9 @@ describe("My Test", () => {
       "2"
     );
     cy.get("#inlineRadio3").should("be.disabled");
+    cy.get(".nav-link").contains("Shop").click();
+    this.data.productNames.forEach((productName) => {
+      cy.selectProduct(productName);
+    });
   });
 });

@@ -1,3 +1,5 @@
+import HomePage from "../pageObjects/HomePage";
+
 describe("My Test", () => {
   before(() => {
     return cy.fixture("testFramework1").then(function (data) {
@@ -6,17 +8,18 @@ describe("My Test", () => {
   });
 
   it("My FirstTest case", function () {
+    const homePage = new HomePage();
     cy.visit("https://rahulshettyacademy.com/angularpractice/");
-    cy.get('.form-group input[name="name"]').type(this.data.name);
-    cy.get("#exampleFormControlSelect1").select(this.data.gender);
-    cy.get('input[name="name"]').eq(1).should("have.value", this.data.name);
-    cy.get('.form-group input[name="name"]').should(
+    homePage.getEditBox().type(this.data.name);
+    homePage.getGender().select(this.data.gender);
+    homePage.getTwoWayDataBinding().should("have.value", this.data.name);
+    homePage.getEditBox().should(
       "have.attr",
       "minlength",
       "2"
     );
-    cy.get("#inlineRadio3").should("be.disabled");
-    cy.get(".nav-link").contains("Shop").click();
+    homePage.getEntrepreneur().should("be.disabled");
+    homePage.getShopTab().click();
     this.data.productNames.forEach((productName) => {
       cy.selectProduct(productName);
     });

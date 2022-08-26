@@ -11,7 +11,7 @@ describe("My Test", () => {
   it("My FirstTest case", function () {
     const homePage = new HomePage();
     const productsPage = new ProductsPage();
-    cy.visit("https://rahulshettyacademy.com/angularpractice/");
+    cy.visit(Cypress.env("url"));
     homePage.getEditBox().type(this.data.name);
     homePage.getGender().select(this.data.gender);
     homePage.getTwoWayDataBinding().should("have.value", this.data.name);
@@ -42,7 +42,7 @@ describe("My Test", () => {
     cy.contains("Checkout").click();
     cy.get("#country").type("India");
     cy.get(".suggestions", {
-      timeout: 6000,
+      timeout: 8000,
     })
       .find("a")
       .eq(0)
@@ -53,6 +53,5 @@ describe("My Test", () => {
       "include.text",
       "Thank you! Your order will be delivered in next few weeks"
     );
-
   });
 });

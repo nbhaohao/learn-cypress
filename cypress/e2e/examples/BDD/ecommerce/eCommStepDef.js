@@ -8,7 +8,7 @@ import {
 import HomePage from "../../../pageObjects/HomePage";
 import ProductsPage from "../../../pageObjects/ProductsPage";
 
-Before(() => {
+let filledName = Before(() => {
   cy.fixture("testFramework1").then(function (data) {
     cy.log("beforeEach");
     this.data = data;
@@ -63,4 +63,25 @@ Then("Select the country submit and verify thank you", () => {
     "include.text",
     "Thank you! Your order will be delivered in next few weeks"
   );
+});
+
+When("I fill the form details", function (dataTable) {
+  const homePage = new HomePage();
+
+  filledName = dataTable.rawTable[1][0];
+  homePage.getEditBox().type(filledName);
+  homePage.getGender().select(dataTable.rawTable[1][1]);
+});
+Then("Validate the forms behavior", function () {
+  const homePage = new HomePage();
+
+  homePage.getTwoWayDataBinding().should("have.value", filledName);
+  homePage.getEditBox().should("have.attr", "minlength", "2");
+  homePage.getEntrepreneur().should("be.disabled");
+});
+
+And("Select the shop page", () => {
+  const homePage = new HomePage();
+
+  homePage.getShopTab().click();
 });
